@@ -5,9 +5,9 @@ from datetime import datetime, timedelta, date
 from time import sleep
 
 ###------------------------------------  ---  ---START HERE---  ---  ------------------------------------------------###
-
 webhook = 'https://b24-xlxcp4.bitrix24.ru/rest/1/uqf2lp8dgfk85u15/'  # персональный вебхук Bitrix24
 b = Bitrix(webhook)  # переменная-сокращение для вызова методов 'b.call()'
+START_WORK_DAY = 6
 
 calendar = ProdCalendar()  # переменная для вызова методов бибиотеки 'isdayoff'
 
@@ -44,6 +44,6 @@ if __name__ == '__main__':
     while True:
         now = datetime.now()
         print('Проверка. Время >>> ', now.hour)
-        if now.hour == 21:
+        if now.hour == START_WORK_DAY:
             check_day_is_off()
-        sleep(86400)
+        sleep(3600)
